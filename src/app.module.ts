@@ -3,25 +3,28 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AuthModule } from './controllers/auth/auth.module';
-import { TodosModule } from './controllers/todos/todos.module';
+import { AuthModule } from './todos-api/controllers/auth/auth.module';
+import { TodosModule } from './todos-api/controllers/todos/todos.module';
 
 @Module({
   imports: [
+
+    /**Section for General Configuration */
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGODB_URL),
-    AuthModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '2m'}
-
+      signOptions: { expiresIn: '60m'}
     }),
-    TodosModule
+    /**End of General configuration section */
+
+    /**Section for Todos app */
+      AuthModule,
+      TodosModule
+    /**End of Todos app */
     
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
