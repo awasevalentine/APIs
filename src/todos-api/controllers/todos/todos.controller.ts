@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put, Res } from '@nestjs/common';
-import { TodoDto } from 'src/models/dtos/todo.dto';
-import { TodoItems } from 'src/models/interface/todo.interface';
-import { TodoServiceService } from 'src/services/todo-service/todo-service.service';
+import { TodoDto } from 'src/todos-api/models/dtos/todo.dto';
+import { TodoItems } from 'src/todos-api/models/interface/todo.interface';
+import { TodoServiceService } from 'src/todos-api/services/todo-service/todo-service.service';
 
 @Controller('api/todos')
 export class TodosController {

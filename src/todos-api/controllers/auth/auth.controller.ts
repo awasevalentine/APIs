@@ -1,10 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Body, Controller, HttpException, Post, Req, Request, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
-import { UserDto } from 'src/models/dtos/user.dto';
-import { AuthServiceService } from 'src/services/auth-service/auth-service.service';
+import { UserDto } from 'src/todos-api/models/dtos/user.dto';
+import { AuthServiceService } from 'src/todos-api/services/auth-service/auth-service.service';
 import { LocalAuthGuard } from './auth-middlewares/guards/local.guard';
-
 @Controller('api/auth')
 export class AuthController {
 
